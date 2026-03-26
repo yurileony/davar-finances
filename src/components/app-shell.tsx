@@ -7,8 +7,8 @@ import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 const items = [
-  { href: "/dashboard", label: "Dashboard", icon: Home },
-  { href: "/transactions", label: "Transactions", icon: Wallet },
+  { href: "/dashboard", label: "Dashboard" as const, icon: Home },
+  { href: "/transactions", label: "Transactions" as const, icon: Wallet },
   { href: "/categories", label: "Categories", icon: Tags },
   { href: "/settings", label: "Settings", icon: Settings }
 ];
@@ -35,7 +35,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           {items.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={item.href as any}
               className={cn(
                 "flex items-center gap-2 rounded-xl px-3 py-2 text-sm",
                 pathname === item.href
